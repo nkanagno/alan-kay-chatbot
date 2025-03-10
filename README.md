@@ -22,8 +22,9 @@ pip install -r requirements.txt
 
 ## Configure your OpenAi api key
 
-To configure your OpenAI API key, navigate to the main [OpenAI platform website](https://platform.openai.com/)
-After obtaining your API key, add it to a .env file in your project root with the following format:
+To configure your OpenAI API key, navigate to the main [OpenAI platform website](https://platform.openai.com/).
+
+After obtaining your API key, add it to a `.env` file in your project root with the following format:
 ```
 OPENAI_API_KEY=your_api_key_here
 ```
