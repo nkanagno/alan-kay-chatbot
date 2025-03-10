@@ -22,11 +22,10 @@ pip install -r requirements.txt
 
 ## Configure your OpenAi api key
 
-To configure your Open Ai api key you have to navigate to the main [website](https://platform.openai.com/)
-
-and put inside a `.env` file, in the following variable:
+To configure your OpenAI API key, navigate to the main [OpenAI platform website](https://platform.openai.com/)
+After obtaining your API key, add it to a .env file in your project root with the following format:
 ```
-OPENAI_API_KEY=
+OPENAI_API_KEY=your_api_key_here
 ```
 
 ## Run chatbot.py
