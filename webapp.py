@@ -38,7 +38,7 @@ def get_circular_image_html(image_path, width=150):
             </div>
             <div style="margin-left:30%;">
                 <h1>Alan Kay</h1>
-                <h5 style='color: grey;'>Ask me anything...</h5>
+                <h5 style='color: grey;'>American computer scientist</h5>
             </div>
         </div>
         '''
@@ -46,7 +46,6 @@ def get_circular_image_html(image_path, width=150):
     except Exception as e:
         return f"<div>Error loading image: {e}</div>"
 
-cols = st.columns(3)
 
 with st.sidebar:
     st.markdown(get_circular_image_html('./assets/alan_kay_profile.jpg'), unsafe_allow_html=True)
@@ -55,23 +54,28 @@ with st.sidebar:
 
 
 
+
 # Spacing to prevent overlap
 
-st.title("AI Chatbot:")
-with st.container(border=False,height=550):
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
+st.markdown('<h1 class="chat-title">AI Chatbot</h1>', unsafe_allow_html=True)
 
-    for message in st.session_state.chat_history:
-        if message["role"] == 'assistant':
-            with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
-                st.write(message['message'])
-        else:
-            with st.chat_message("user"):
-                st.write(message['message'])
+# Scrollable chat messages container
+st.markdown('<div class="chat-container">', unsafe_allow_html=True)
 
 
-if user_input := st.chat_input("You:", key="user_input"):
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
+
+for message in st.session_state.chat_history:
+    if message["role"] == 'assistant':
+        with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
+            st.write(message['message'])
+    else:
+        with st.chat_message("user"):
+            st.write(message['message'])
+st.markdown('</div>', unsafe_allow_html=True)
+
+if user_input := st.chat_input("Ask me anything...", key="user_input"):
     user_message = {"role": "user", "message": user_input}
     st.session_state.chat_history.append(user_message)
     with st.chat_message("user"):
@@ -92,4 +96,3 @@ if user_input := st.chat_input("You:", key="user_input"):
         
     chatbot_message = {"role": "assistant", "message": assistant_response}
     st.session_state.chat_history.append(chatbot_message)
-    
