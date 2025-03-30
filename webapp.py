@@ -3,7 +3,9 @@ import streamlit as st
 import time
 import requests
 import os
-
+import base64
+from PIL import Image
+from io import BytesIO
 
 API_URL = "http://127.0.0.1:8000/ask/alan_kay"
 
@@ -18,20 +20,55 @@ def API_response(API_URL,question):
         response = "Error: Unable to reach the backend API."
     return response
 
+def get_circular_image_html(image_path, width=150):
+    try:
+        img = Image.open(image_path)
+        
+        # Convert to HTML
+        buffered = BytesIO()
+        img.save(buffered, format="PNG")
+        img_str = base64.b64encode(buffered.getvalue()).decode()
+        
+        # HTML with CSS for circular image
+        html = f'''
+        <div style="display: flex; flex-direction: row; justify-content: flex-start; margin-bottom:20px;">
+            <div style="width:100px;">
+                <img src="data:image/png;base64,{img_str}" 
+                    style="border-radius:50%; width:{width}px; height:{width}px; object-fit:cover;">
+            </div>
+            <div style="margin-left:30%;">
+                <h1>Alan Kay</h1>
+                <h5 style='color: grey;'>Ask me anything...</h5>
+            </div>
+        </div>
+        '''
+        return html
+    except Exception as e:
+        return f"<div>Error loading image: {e}</div>"
 
-st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg')
-st.title("Alan Kays Chatbot")
-st.write("#### Ask Alan Kay anything...")
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
+cols = st.columns(3)
 
-for message in st.session_state.chat_history:
-    if message["role"] == 'assistant':
-        with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
-            st.write(message['message'])
-    else:
-        with st.chat_message("user"):
-            st.write(message['message'])
+with st.sidebar:
+    st.markdown(get_circular_image_html('./assets/alan_kay_profile.jpg'), unsafe_allow_html=True)
+    st.write("# Profile:")
+    st.write("""I was born on May 17, 1940. Pioneer in object-oriented programming and windowing graphical user interfaces. Led the development of the first modern windowed computer desktop at Xerox PARC. Created the Smalltalk programming language and coined the term "object-oriented." Currently a computer scientist with decades of experience in software development. Recipient of the 2003 Turing Award and Fellow of the American Academy of Arts and Sciences, National Academy of Engineering, and Royal Society of Arts.""")
+
+
+
+# Spacing to prevent overlap
+
+st.title("AI Chatbot:")
+with st.container(border=False,height=550):
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
+
+    for message in st.session_state.chat_history:
+        if message["role"] == 'assistant':
+            with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
+                st.write(message['message'])
+        else:
+            with st.chat_message("user"):
+                st.write(message['message'])
 
 
 if user_input := st.chat_input("You:", key="user_input"):
