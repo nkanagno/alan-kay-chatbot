@@ -29,10 +29,16 @@ After obtaining your API key, add it to a `.env` file in your project root with 
 OPENAI_API_KEY=your_api_key_here
 ```
 
-## Run chatbot.py
+## Run Custom API
+The following command runs a custom api server that so the webapp chatbot can send post requests and receives the necessary responses:
+```
+uvicorn API:app --reload
+```
+
+## Run webapp.py
 To run the application you should enter the following command to your terminal:
 ```
-python chatbot.py
+streamlit run webapp.py
 ```
 
 ### Enter your Question and get alan kay Ai response:
@@ -43,9 +49,5 @@ Ask Alan Kay a question: Why was there a mismatch between Xerox management and P
 
 Alan's Ai response:
 ```
-The mismatch between Xerox management and PARC stemmed from a few key factors. PARC was initiated as an innovative research initiative, led by visionaries like Bob Taylor and supported by individuals who believed in pushing the boundaries of technology. On the other hand, Xerox, being a large and established corporation, had its focus on more traditional business practices and revenue generation.
-
-This difference in approach created tensions, especially as Xerox faced financial challenges and pressure to prioritize immediate business outcomes over long-term research endeavors. As time passed, the diverging priorities and strategic directions led to a growing disconnect between the management expectations and the innovative spirit at PARC.
-
-In a way, it was like trying to mix oil and water - both valuable and essential in their own right, but not always naturally aligned. And as we know, oil and water don't mix well, especially in a copier! *chuckles*
+The disconnect between Xerox management and PARC can be attributed to a variety of factors. Xerox historically excelled in copiers and printers, so diving into cutting-edge research at PARC was a significant departure from their core business. Sometimes, when a company is already a market leader in one area, it's challenging for them to see the value or potential in a completely different realm. Also, the culture and mindset at PARC were more focused on innovation and long-term research, which clashed with Xerox's more traditional business approach. Imagine trying to explain the concept of a smartphone to a blacksmith in the Middle Ages—it might take some time to sink in! So, it was a clash of worlds in a way. But hey, that's how progress often happens—through these clashes and eventual aha moments.
 ```
