@@ -6,6 +6,9 @@ sentence_transformers
 boto3
 openai
 python-dotenv
+pandas
 chromadb
 fastapi 
 uvicorn
+xlrd
+streamlit
