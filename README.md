@@ -46,8 +46,12 @@ Example question:
 ```
 Ask Alan Kay a question: Why was there a mismatch between Xerox management and PARC?
 ```
+<img width="1510" alt="Alan kay Ai chatbot" src="https://github.com/user-attachments/assets/7d736399-855a-4e5c-aa35-9b3b9e2231a1" />
+
 
 Alan's Ai response:
 ```
 The disconnect between Xerox management and PARC can be attributed to a variety of factors. Xerox historically excelled in copiers and printers, so diving into cutting-edge research at PARC was a significant departure from their core business. Sometimes, when a company is already a market leader in one area, it's challenging for them to see the value or potential in a completely different realm. Also, the culture and mindset at PARC were more focused on innovation and long-term research, which clashed with Xerox's more traditional business approach. Imagine trying to explain the concept of a smartphone to a blacksmith in the Middle Ages—it might take some time to sink in! So, it was a clash of worlds in a way. But hey, that's how progress often happens—through these clashes and eventual aha moments.
 ```
+
+
