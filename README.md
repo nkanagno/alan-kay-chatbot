@@ -41,6 +41,6 @@ To run the application you should enter the following command to your terminal:
 streamlit run webapp.py
 ```
 
-## Example:
+# Example:
 <img width="1510" alt="Alan kay Ai chatbot" src="https://github.com/user-attachments/assets/7d736399-855a-4e5c-aa35-9b3b9e2231a1" />
 
