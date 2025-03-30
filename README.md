@@ -44,7 +44,7 @@ streamlit run webapp.py
 ### Enter your Question and get alan kay Ai response:
 Example question:
 ```
-Ask Alan Kay a question: Why was there a mismatch between Xerox management and PARC?
+Why was there a mismatch between Xerox management and PARC?
 ```
 <img width="1510" alt="Alan kay Ai chatbot" src="https://github.com/user-attachments/assets/7d736399-855a-4e5c-aa35-9b3b9e2231a1" />
 
