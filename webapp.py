@@ -8,6 +8,8 @@ from PIL import Image
 from io import BytesIO
 
 API_URL = "http://127.0.0.1:8000/ask/alan_kay"
+ALAN_KAY_PROFILE_IMG = './data/assets/alan_kay_profile.jpg'
+
 
 def API_response(API_URL,question):
     try:
@@ -48,7 +50,7 @@ def get_circular_image_html(image_path, width=150):
 
 
 with st.sidebar:
-    st.markdown(get_circular_image_html('./assets/alan_kay_profile.jpg'), unsafe_allow_html=True)
+    st.markdown(get_circular_image_html(ALAN_KAY_PROFILE_IMG), unsafe_allow_html=True)
     st.write("# Profile:")
     st.write("""I was born on May 17, 1940. Pioneer in object-oriented programming and windowing graphical user interfaces. Led the development of the first modern windowed computer desktop at Xerox PARC. Created the Smalltalk programming language and coined the term "object-oriented." Currently a computer scientist with decades of experience in software development. Recipient of the 2003 Turing Award and Fellow of the American Academy of Arts and Sciences, National Academy of Engineering, and Royal Society of Arts.""")
 
@@ -68,7 +70,7 @@ if 'chat_history' not in st.session_state:
 
 for message in st.session_state.chat_history:
     if message["role"] == 'assistant':
-        with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
+        with st.chat_message("assistant", avatar=ALAN_KAY_PROFILE_IMG):
             st.write(message['message'])
     else:
         with st.chat_message("user"):
@@ -80,7 +82,7 @@ if user_input := st.chat_input("Ask me anything...", key="user_input"):
     st.session_state.chat_history.append(user_message)
     with st.chat_message("user"):
         st.markdown(user_input)
-    with st.chat_message("assistant", avatar='./assets/alan_kay_profile.jpg'):
+    with st.chat_message("assistant", avatar=ALAN_KAY_PROFILE_IMG):
         status_text = st.empty()
         status_text.markdown("Alan Kay is typing...")
         assistant_response = API_response(API_URL,user_input)
